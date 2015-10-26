@@ -33,6 +33,11 @@ body {
     margin-bottom: 25px;
 }
 
+button {
+	box-shadow: none;
+	appearance: none;
+}
+
 #options {
     color: #ff525a;
     background-color: #FFFFFF;
