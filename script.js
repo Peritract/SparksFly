@@ -1,112 +1,256 @@
 $( document ).ready(function(){
 	Sparky = {};
 
-	Sparky.surreality = 0;
+	//The following lines are all of the lists needed for the generator to work. Each subgenre is an object which stores all its options, and they are added together later in the generator. Each subgenre has the basic format as follows:
+	//Sparky.generic = {
+		//chosen : "no",
+		//attributes_1 : [],
+		//identities_1 : [],
+		//names_1 : [],
+		//situation_verbs: [],
+		//verbs : [{text: '', prep: ''}],
+		//locations : [{text: '', prep: ''}],
+		//attributes_2: [],
+		//identities_2: [],
+		//names_2: [],
+		//surnames: []
+		//};
 
-	Sparky.careers = [' sheikh', ' pilot', ' playboy', ' philanthropist', ' scientist', ' fireman', ' detective', ' chef', ' prince', ' jockey', ' magnate', ' real estate developer', ' retired marine', ' pirate king', ' basketball player', ' Hollywood star', ' actor', ' singer', ' pilot', ' soldier', ' freedom fighter', ' lawyer', ' rogue', ' scoundrel', ' earl', ' duke', ' count'];
+	Sparky.general = {
+		chosen : "yes",
+		attributes_1 : ['lonely','feisty','attractive','heartbroken','optimistic','pessimistic','confident','scatter-brained','flighty','vivacious','beautiful','gorgeous','independent','pretty','ditsy','charming','sunny-tempered','naive','stubborn','adorable','sweet-natured'],
+		identities_1 : ["brunette","blonde","red-head", "single", "widow"],
+		names_1 : ["Hilda","Rose", "Lucy",'Anna', 'Bella', 'Sophie', 'Elizabeth', 'Helen', 'Nicola', 'Julia','Charlotte' , 'Emma', 'Amy', 'Bridget' , 'Hannah' , 'Ruth', 'Nicole', 'Rebecca', 'Helen' , 'Nora'],
+		situation_verbs: ["ends up","winds up", "finds herself"],
+		verbs : [{text: "stranded", prep: "yes"},
+	{text: "managing"},
+	{text: "imprisoned", prep: "yes"},
+	{text: "running"},
+	{text: "working", prep: "yes"}],
+		locations : [{text:'a desert island', prep:'on'},
+	{text:'a yacht', prep:' on'},
+	{text:'a garden center', prep:'in'},
+	{text:'a ski resort', prep:'in'},
+	{text:'a desert', prep:'in'},
+	{text:'a vast forest', prep:'in'},
+	{text:'a vegan bakery', prep:'in'},
+	{text:'the big city', prep:'in'},
+	{text:'a quiet village', prep:'in'}],
+		attributes_2: ['controlling','bearded','bored', 'cold-hearted', 'stern', 'driven', 'charming', 'heartbroken', 'widowed','infuriating', 'reclusive', 'foreign', 'soft-spoken', 'rugged' , 'invalid' , 'genius' , 'dazzling' , 'intoxicating' , 'kissable' , 'lonely' , 'wealthy' , 'athletic' , 'sophisticated' , 'sardonic' , 'sarcastic' , 'explosive', 'hostile' , 'French' , 'Spanish' , 'British' , 'heartless' , 'thoughtless' , 'careless' , 'immoral' , 'charismatic' , 'twisted' , 'dashing' , 'suave' , 'handsome' , 'tall' , 'dark' , 'dangerous', 'domineering','autocratic'],
+		identities_2: ['stranger','newcomer','cad','heart-throb','charmer',''],
+		names_2: ['James','Rufus','Jean-Claude','Titus','Charles','Robert','Remington','Alec','Alex','Alan','Thomas','Mark','Marc','Benjamin','Benedict','Dominic','Leon','Jonathan','John','Derek','Stephen','Harold','Harry','Philip','Rupert','Nathan','Simon','David','William','Paul','Miles','Carlos','Hector','Adrian','Gregory','Julio','Luke','Clark','Alejandro','Nicholas','Luther','Saul'],
+		surnames: ["Smith", 'Steele', 'Titanium', 'Caffrey', 'Rankin', "Cullen", "Grey", "Pascal", 'Walton', 'Fox', 'Meldrum' , 'Lopez' , 'Ramirez' , 'Ramage' , 'Cholmondley' , 'Wimsey' , 'Rebus' , 'Rankin' , 'Patterson' , 'Goldberg' , 'Dresden' , 'Martin' , 'Collins' , 'Hudson' , 'Brett' , 'Heyer' , 'Howard', 'Moylett','Wayne','Kent','Morales']
+	};
 
-	Sparky.surnames = [' Steele', ' Titanium', ' Caffrey', ' Rankin', " Cullen", " Grey", " Pascal", ' Walton', ' Fox', ' Meldrum' , ' Lopez' , ' Ramirez' , ' Ramage' , ' Cholmondley' , ' Wimsey' , ' Rebus' , ' Rankin' , ' Patterson' , ' Goldberg' , ' Dresden' , ' Martin' , ' Collins' , ' Hudson' , ' Brett' , ' Heyer' , ' Howard'];
+	Sparky.western = {
+		chosen : "no",
+		attributes_1 : [],
+		identities_1 : ['schoolmarm'],
+		names_1 : ['Annie','Jane'],
+		situation_verbs: [],
+		verbs : [],
+		locations : [{text: 'a mining claim', prep: 'in'},{text: 'a saloon', prep: 'in'},{text: 'a ranch', prep: 'on'},{text: 'a stagecoach', prep: 'in'},{text: 'the town gaol', prep: 'in'}],
+		attributes_2: ['Confederate','Yankee','silent','dead-eyed','quick-drawing','rough','fast-talking','illiterate'],
+		identities_2: ['bandit','lawman','sheriff','prospector','card sharp','gun-runner','miner', 'outlaw','rancher','cowboy','cattle rustler','jerkline skinner','Colonel','scout','gun-slinger','rancher'],
+		names_2: ['Buck','Hunter','Cooper','Diego','Tito','Butch','Ned'],
+		surnames: ['Kelly','Cassidy','Hickok','Henry','Drebber',"L'amour",'Barlow']
+	};
 
-	Sparky.male_names = [' Lexington', ' Remington', ' Marc', ' Robert', ' Stephen', ' Alex', ' Rufus', ' Paul', ' Alec', ' Robert', ' John', ' Miles', ' Carlos', ' Hector', ' Adrian' , ' Toby' , ' Hunter' , ' Greg' , ' Cooper' , ' Simon' , ' Julio' , ' Jaime' , ' Alan' , ' Walter' , ' Nicholas' , ' Leighton' , ' Alejandro' , ' Antonio' , ' Saul' , ' Luther' , ' Clark' , ' Luke'];
+	Sparky.adult = {
+		chosen : "no",
+		attributes_1 : ['repressed','free-spirited','virginal','busty','innocent','liberated','barely legal','submissive'],
+		identities_1 : ['virgin','dominatrix','French maid','secretary','older woman','nurse','divorcée','submissive','inner Goddess'],
+		names_1 : ['Tiffany','Chastity'],
+		situation_verbs: [],
+		verbs : [],
+		locations : [{text: 'a dungeon', prep: 'in'},{text: 'the red light district', prep: 'in'},{text: 'a luxurious bed', prep: 'in'}, {text: 'a bearskin rug', prep: 'on'}],
+		attributes_2: ['smouldering','depraved','repressed','liberated'],
+		identities_2: ['Marquis','flagellant','sadist','masochist'],
+		names_2: ['Leopold'],
+		surnames: ['De Sade','Von Sader-Masoch','Lawrence']
+	};
 
-	Sparky.female_names = [' Anna', ' Bella', ' Sophie', ' Elizabeth', ' Helen', ' Nicola', ' Julia', ' Charlotte' , ' Emma' , ' Tiffany' , ' Amy' , ' Sookie' , ' Bridget' , ' Hannah' , ' Ruth' , ' Nicole' , ' Nicola' , ' Becky' , ' Rebecca' , ' Josie' , ' Zara' , ' Helen' , ' Nora'];
+	Sparky.paranormal = {
+		chosen : "no",
+		attributes_1 : ['psychic','sorcerous','cursed','half-fairy'],
+		identities_1 : ['psychic','witch','monster hunter','vampire hunter','slayer','werewolf','vampire','necromancer','nymph','half-fairy','succubus'],
+		names_1 : ['Sookie','Raven','Anita'],
+		situation_verbs: [],
+		verbs : [],
+		locations : [{text: 'Carfax Abbey', prep: 'in'}, {text :'Nether London', prep: 'in'}, {text :'the place between', prep: 'in'}],
+		attributes_2: ['cursed','sorcerous','tormented'],
+		identities_2: ['werewolf','vampire','zombie','dragon','dhampir','vampire hunter','hunter','wizard','sorceror','Knight Templar','warlock','necromancer','half-demon'],
+		names_2: ['Lou'],
+		surnames: ['Dresden','Thompson','Daniels','Stackhouse','Grant','Constantine','Rice','Blake','Winchester','Alucard']
+	};
 
-	Sparky.locations = [
-	{text:' a desert island', prep:' on'},
-	{text:' a yacht', prep:' on'},
-	{text:' a garden center', prep:' in'},
-	{text:' a ski resort', prep:' in'},
-	{text:' a desert', prep:' in'},
-	{text:' a vast forest', prep:' in'},
-	{text:' a vegan bakery', prep:' in'},
-	{text:' the big city', prep:' in'},
-	{text:' a quiet village', prep:' in'},
-	{text:' a ranch', prep:'on'},
-	{text:' a multinational corporation', prep:' in'},
-	{text:' a struggling inner-city school', prep:' in'}];
+	Sparky.professional = {
+		chosen : "no",
+		attributes_1 : ['career-minded','driven','over-worked','stressed','professional','aspiring'],
+		identities_1 : ['secretary','journalist','nurse','translator','charity worker','author','illustrator','barista','teacher'],
+		names_1 : [],
+		situation_verbs: [],
+		verbs : [],
+		locations : [{text:'a multinational corporation', prep:'in'},{text:'the big city', prep:'in'},{text:'an executive bathroom', prep:'in'},	{text:'a yacht', prep:'on'},{text:'a struggling inner-city school', prep:'in'}],
+		attributes_2: ['wealthy','driven','high-powered','professional'],
+		identities_2: ['billionaire','millionaire','executive','jockey','editor','journalist','shipping magnate','CEO','doctor','surgeon','neurosurgeon','sheikh','philanthropist'],
+		names_2: ['Clayton'],
+		surnames: []
+	};
 
-	Sparky.male_adjectives = [' bored', ' cold-hearted', ' stern', ' driven', ' charming', ' heartbroken', ' widowed', ' billionaire', ' infuriating', ' reclusive', ' foreign', ' soft-spoken', ' rugged' , ' invalid' , ' genius' , ' dazzling' , ' intoxicating' , ' kissable' , ' lonely' , ' wealthy' , ' athletic' , ' sophisticated' , ' sardonic' , ' sarcastic' , ' explosive' , ' maverick' , ' hostile' , ' French' , ' Spanish' , ' British' , ' heartless' , ' thoughtless' , ' careless' , ' immoral' , ' charismatic' , ' twisted' , ' dashing' , ' suave' , ' handsome' , ' tall' , ' dark' , ' dangerous' , ' dominant' , ' illiterate' , ' domineering'];
+	Sparky.thriller = {
+		chosen : "no",
+		attributes_1 : [],
+		identities_1 : ['translator','aid worker','investigative journalist','research assistant','scientist','doctor'],
+		names_1 : ['Modesty'],
+		situation_verbs: [],
+		verbs : [],
+		locations : [{text: 'submarine', prep: 'in'},{text: 'missile silo', prep: 'in'},{text: 'volcanic lair', prep: 'in'},{text: 'war-torn country', prep: 'in'},{text: 'crashed plane', prep: 'in'},{text: 'UN summit', prep: 'in'}],
+		attributes_2: ['insane','mad','suave','dangerous','mysterious','falsely accused','maverick','lawless','haunted','disgraced','inscrutable','undercover'],
+		identities_2: ['spy','superspy','anarchist','cop','detective','gumshoe','private investigator','marine','soldier','pilot','scientist','fireman','policeman','mercenary','soldier of fortune','dictator','freedom fighter','symbologist'],
+		names_2: [],
+		surnames: ['Reed','Bond','Leiter','Evanovich','Marlowe','Christie','Vane','Holmes','Watson','Bosch','Castle','Beckett','Jayne','Bourne','Blaise',"'O'Hare",'Fox','Rigsby','Clancy','Crichton']
+	};
 
-	Sparky.female_adjectives = [' bespectacled,', ' shy,', ' lonely,', ' clumsy,', ' outspoken,', ' career-minded,', ' hopelessly romantic,', ' nervous,', ' gorgeous,', ' talented,', ' plump,', ' dull,', ' career-focused,', ' scatter-brained,', ' capable,', ' blonde,', ' brunette,', ' red-headed,', ' freckled,', ' tempestuous,', ' politically active,', ' driven,', ' svelte,', ' street-smart,', ' tomboyish,', ' strait-laced,', ' generous,', ' homesick,', ' animal-loving,', ' over-worked,', ' wrongly accused,', ' gold-digging,', ' newly single,', ' middle-aged,', ' inexperienced,', ' naive,', ' hopeful,'];
-
-	Sparky.surreal_female_adjectives = [' partially paralysed,', ' radioactive,', ' two-headed,', ' bloodthirsty,', ' reanimated,', ' polygonal,', ' half-goat,', ' cursed,', ' ethereal,', ' aquatic,', ' fire-breathing,', ' scaled,', ' amphibious,', ' hyperspace-capable,', ' sub-atomic,', ' sorcerous,', ' rugose,', ' squamous,', ' prophecied,', ' half-demon,', ' vampiric,', ' undead,', ' many-legged,', ' many-eyed,', ' furry,', ' cloven-hooved,', ' metallic,', ' positronic,', ' ambulatory,', ' hunchbacked,', ' misshapen,', ' malevolent,', ' divinely-inspired,', ' incorporeal'];
-
-	Sparky.situational_phrases = [' ends up', ' finds herself'];
-
-	Sparky.predicaments = [
-	{text: " stranded", prep: "yes"},
-	{text: " managing"},
-	{text: " imprisoned", prep: "yes"},
-	{text: " running"},
-	{text: " working", prep: "yes"}
-	];
+	Sparky.subgenres = [Sparky.general, Sparky.western, Sparky.adult, Sparky.paranormal, Sparky.professional,Sparky.thriller]
 
 	Sparky.pick = function(e){
+		//picks a word randomly from a list.
 		return e[Math.floor(Math.random() * e.length)];
 	};
 
-	Sparky.complex_pick = function(e, i){
-		var choice = Math.floor(Math.random() * 2)
-		if (choice) {
-			return i[Math.floor(Math.random() * i.length)];
+	Sparky.collate = function(){
+		//joins lists together from subgenres to create the master list.
+		var attributes_1 = [];
+		var identities_1 = [];
+		var names_1 = [];
+		var situation_verbs = [];
+		var verbs = [];
+		var locations = [];
+		var attributes_2 = [];
+		var identities_2 = [];
+		var names_2 = [];
+		var surnames = [];
+		for (i=0;i<this.subgenres.length;i++){
+			if (this.subgenres[i].chosen === "yes"){
+				e = this.subgenres[i];
+				attributes_1 = attributes_1.concat(e.attributes_1);
+				identities_1 = identities_1.concat(e.identities_1);
+				names_1 = names_1.concat(e.names_1);
+				situation_verbs = situation_verbs.concat(e.situation_verbs);
+				verbs = verbs.concat(e.verbs);
+				locations = locations.concat(e.locations);
+				attributes_2 = attributes_2.concat(e.attributes_2);
+				identities_2 = identities_2.concat(e.identities_2);
+				names_2 = names_2.concat(e.names_2);
+				surnames = surnames.concat(e.surnames);
+			} 
 		}
-		else {
-			return e[Math.floor(Math.random() * e.length)];
-		}
+		var collection = [attributes_1,identities_1,names_1,situation_verbs,verbs,locations,attributes_2,identities_2,names_2,surnames];
+		return collection;
 	};
 
 	Sparky.generate = function(){
-		var blurb = this.create_blurb();
-		$('#box').html(blurb);
+		//calls the function to generate the sentence, and puts it on the page.
+		var sentence = this.create_sentence();
+		$('#box').html(sentence);
 	};
 
-	Sparky.create_blurb = function(){
-		if (this.surreality) {
-			var adjective_1 = this.complex_pick(this.female_adjectives, this.surreal_female_adjectives);
-			var adjective_2 = this.complex_pick(this.female_adjectives, this.surreal_female_adjectives);
-		}
-		else {
-			var adjective_1 = this.pick(this.female_adjectives);
-			var adjective_2 = this.pick(this.female_adjectives);
-		}
-		while(adjective_1 === adjective_2){
-			adjective_2 = this.pick(this.female_adjectives)
-		}
-		adjective_2 = adjective_2.slice(0, -1)
-		var predicament = this.pick(this.predicaments)
-		var location = this.pick(this.locations)
-		var preposition = " " + location.prep;
-		if (!predicament.prep){
-			preposition = "";
-		};
-		
-		var blurb = "When " + adjective_1 + adjective_2 + this.pick(this.female_names) + this.pick(this.situational_phrases) + predicament.text + preposition + location.text + " with" + this.pick(this.male_adjectives) + this.pick(this.careers) + this.pick(this.male_names) + this.pick(this.surnames) + ", sparks fly.";
-		
-		return blurb; 
-	};
+	Sparky.create_sentence = function(){
+		//This creates a sentence from the various applicable lists.
+		//The following lines select the words used for the eventual sentence.
+		sets = this.collate();
+		var attribute_1 = this.pick(sets[0]);
 
-	Sparky.toggle_surreality = function(surreality){
-		Sparky.surreality = surreality;
-	};
+		var identity_1 = this.pick(sets[1]);
 
-	$("#surreal").change(function() {
-		if(this.checked) {
-			Sparky.toggle_surreality(1);
+		var name_1 = this.pick(sets[2]);
+
+		var situation_verb = this.pick(sets[3]);
+
+		var verb = this.pick(sets[4]);
+
+		var location = this.pick(sets[5]);
+
+		var attribute_2 = this.pick(sets[6]);
+
+		var identity_2 = this.pick(sets[7]);
+
+		var name_2 = this.pick(sets[8]);
+
+		var surname = this.pick(sets[9]);
+
+		//The next three lines choose the preposition, if one is needed.
+		var preposition = " " + location.prep + " ";
+		if (!verb.prep){
+		var preposition = " ";
 		}
-		else {
-			Sparky.toggle_surreality(0)
-		}
-	});
+
+		//puts the whole sentence together.
+		var sentence = "When " + attribute_1 +" "+ identity_1 +" "+ name_1 +" "+ situation_verb +" "+ verb.text + preposition + location.text + " with " + attribute_2 +" "+ identity_2 +" "+ name_2 +" "+ surname + ", sparks fly.";
+
+		return sentence;
+	};
 
 	$('#generate').click(function(){
+		//when the "generate" button is clicked, generate a new sentence
 		Sparky.generate();
 	});
 
 	$('.about').click(function(){
+		//display an "about" card with information about stuff.
 		$('#overlay').toggle();
 		$('#about_card').toggle();
 	});
 
+	//These functions include or exclude subgenres.
+	$("#Western").change(function() {
+		if(this.checked) {
+			Sparky.western.chosen = 'yes';
+		}
+		else {
+			Sparky.western.chosen = 'no';
+		}
+	});
+
+	$("#Adult").change(function() {
+		if(this.checked) {
+			Sparky.adult.chosen = 'yes';
+		}
+		else {
+			Sparky.adult.chosen = 'no';
+		}
+	});
+
+	$("#Professional").change(function() {
+		if(this.checked) {
+			Sparky.professional.chosen = 'yes';
+		}
+		else {
+			Sparky.professional.chosen = 'no';
+		}
+	});
+
+	$("#Paranormal").change(function() {
+		if(this.checked) {
+			Sparky.paranormal.chosen = 'yes';
+		}
+		else {
+			Sparky.paranormal.chosen = 'no';
+		}
+	});
+
+	$("#Thriller").change(function() {
+		if(this.checked) {
+			Sparky.thriller.chosen = 'yes';
+		}
+		else {
+			Sparky.thriller.chosen = 'no';
+		}
+	});
+
+	//the next three lines just set up everything the first time the page loads. 
+	//Things that should be hidden are hidden, and a sentence is created.
 	$('#overlay').hide();
 	$('#about_card').hide();
 	Sparky.generate();
