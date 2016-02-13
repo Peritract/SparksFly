@@ -5,23 +5,16 @@ body {
     overflow: hidden;
 }
 
-* {
-    -moz-user-select: none; 
-    -khtml-user-select: none; 
-    -webkit-user-select: none; 
-    -o-user-select: none;
-}
-
 #box {
     background-color: #FFFFFF;
     color: #ff525a;
     font-style: italic;
+    min-height: 10%;
     font-size: 150%;
     margin: auto;
     border: 3px solid #a1dbe9;
-    margin: 5%;
-    padding: 5%;
-    height: 50px;
+    margin: 1%;
+    padding: 3%;
 }
 
 #generate {
@@ -32,6 +25,8 @@ body {
     background-color: #FFFFFF;
     border: 3px solid #a1dbe9;
     margin-bottom: 25px;
+    cursor: pointer; 
+    cursor: hand;
 }
 
 #options {
@@ -47,6 +42,8 @@ body {
     font-size 110%;
     margin: auto;
     display: table;
+    cursor: pointer; 
+    cursor: hand;
 }
 
 #header {
@@ -88,4 +85,3 @@ a {
 #about_card .about {
     background-color: #FFFFFF;
 }
-
