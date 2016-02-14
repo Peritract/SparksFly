@@ -118,7 +118,7 @@ Sparky.historical = {
 		situation_verbs: [],
 		verbs : [{text: 'hunted', prep: 'yes'},
 		{text: 'disguised', prep: 'yes'}],
-		locations : [{text: 'Almacks', prep: 'at'},{text: 'a palatial estate', prep: 'in'},{text: 'revolutionary France', prep: 'in'},{text: 'the vicarage', prep: 'in'},{text: 'her ancestral home', prep: 'in'},{text: 'an entailed estate', prep: 'on'},{text: 'a galleon', prep: 'on'},{text: 'a plantation', prep: 'on'},{text: 'the drawing room', prep: 'in'}],
+		locations : [{text: 'Almacks', prep: 'at'},{text: 'a palatial estate', prep: 'in'},{text: 'revolutionary France', prep: 'in'},{text: 'the vicarage', prep: 'in'},{text: 'her ancestral home', prep: 'in'},{text: 'an entailed estate', prep: 'on'},{text: 'a galleon', prep: 'on'},{text: 'a plantation', prep: 'on'},{text: 'the drawing room', prep: 'in'},{text: 'the gardens', prep: 'in'},{text: 'a carriage', prep: 'in'},{text: 'a gentleman's club, prep: 'in'}],
 		attributes_2: [],
 		identities_2: ['curate','rake','libertine','captain','lord','count','revenue man','mill owner','Ajax'],
 		names_2: [],
