@@ -187,7 +187,7 @@ $( document ).ready(function(){
 		}
 
 		//puts the whole sentence together.
-		var sentence = "When " + attribute_1 +" "+ identity_1 +" "+ name_1 +" "+ situation_verb +" "+ verb.text + preposition + location.text + " with " + attribute_2 +" "+ identity_2 +" "+ name_2 +" "+ surname + ", sparks fly.";
+		var sentence = attribute_1 +" "+ identity_1 +" "+ name_1 +" "+ situation_verb +" "+ verb.text + preposition + location.text + " with " + attribute_2 +" "+ identity_2 +" "+ name_2 +" "+ surname + ",";
 
 		return sentence;
 	};

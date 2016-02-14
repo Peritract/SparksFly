@@ -1,5 +1,7 @@
 <head>
-	<link rel="stylesheet" type="text/css" href="app.css">
+	<link href='http://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="app.css" type='text/css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="script.js"></script>
 	
@@ -35,8 +37,6 @@
 	
 </head>
 <body>
-	<div id='header'>~Romantic Premise Generator~</div>
-	<div class='about'>About</div>
 
 	<div id='box'>
 	</div>
@@ -44,17 +44,15 @@
 	<button id='generate'>Generate</button>
 
 	<div id='subgenres'>
-		<h4>Subgenres:</h4>
-		<div>
-			Paranormal: <input type='checkbox' id='Paranormal'>
-			Western: <input type='checkbox' id='Western'>
-			Thriller: <input type='checkbox' id='Thriller'>
-			Adult: <input type='checkbox' id='Adult'>
-		</div>
-		<div>
-			Professional: <input type='checkbox' id='Professional'>
-		</div>
-
+		<h4 class="genre-title">Subgenres:</h4>
+		<ul class="genre-list">
+			<li>Paranormal: <input type='checkbox' id='Paranormal'></li>
+			<li>Western: <input type='checkbox' id='Western'></li>
+			<li>Thriller: <input type='checkbox' id='Thriller'></li>
+			<li>Adult: <input type='checkbox' id='Adult'></li>
+			<li>Professional: <input type='checkbox' id='Professional'></li>
+		</ul>
+	<div class='about'>About</div>
 	</div>
 	<div id='about_card'>Standing awkwardly on the shoulders of the giants who made <a href=http://www.theyfightcrime.org/>"They Fight Crime"</a> and <a href=https://misterkeefe.github.io/VicFic/dist/>"The Madcap Fiction Machine"</a>, I present "Sparks Fly", which generates premises for romantic fiction. <br><br> Click the "generate" button to get a new premise. Mix and match subgenres to your heart's delight. That's pretty much it. <br><br> I blog <a href=https://inconsistentpacing.wordpress.com>here</a>, and am on Twitter <a href=https://twitter.com/peritract>here</a>. Let me know what you think.<br> <br><div class='about'>Close</div>
 	</div>
