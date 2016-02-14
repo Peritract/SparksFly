@@ -48,6 +48,11 @@ body {
     font-size: 40px;
 }
 
+@media only screen and (max-width: 60em) {
+    #box::before{
+    font-size: 40px;
+}
+
 #generate {
     font-size: 200%;
     font-family:"Special Elite", cursive;
