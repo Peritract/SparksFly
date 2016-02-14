@@ -43,16 +43,6 @@ body {
     right:-30px;
 }
 
-@media only screen and (max-width: 60em) {
-    #box::after{
-    font-size: 40px;
-}
-
-@media only screen and (max-width: 60em) {
-    #box::before{
-    font-size: 40px;
-}
-
 #generate {
     font-size: 200%;
     font-family:"Special Elite", cursive;
@@ -145,4 +135,14 @@ a {
     color:#ff525a;
     font-family:"Special Elite", cursive;
     font-size:24px;
+}
+
+@media only screen and (max-width: 60em) {
+	#box::after{
+	font-size: 40px;
+}
+	#box::after{
+    	font-size: 40px;
+}
+}
 }
