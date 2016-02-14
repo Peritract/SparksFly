@@ -2,6 +2,7 @@ body {
     text-align: center;
     background: url("cloud.jpg");
     min-height: 100%;
+    overflow:hidden;
 }
 
 #box {
