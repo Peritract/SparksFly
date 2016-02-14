@@ -138,7 +138,7 @@ a {
 }
 
 @media only screen and (max-width: 60em) {
-	#box::after{
+	#box::before{
 	font-size: 40px;
 	}
 }
