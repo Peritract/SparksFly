@@ -48,7 +48,7 @@ $( document ).ready(function(){
 		identities_1 : ['schoolmarm'],
 		names_1 : ['Annie','Jane'],
 		situation_verbs: [],
-		verbs : [],
+		verbs : [{text: 'working a claim', prep: 'yes'},{text: 'herding cattle', prep: 'yes'}],
 		locations : [{text: 'a mining claim', prep: 'in'},{text: 'a saloon', prep: 'in'},{text: 'a ranch', prep: 'on'},{text: 'a stagecoach', prep: 'in'},{text: 'the town gaol', prep: 'in'}],
 		attributes_2: ['Confederate','Yankee','silent','dead-eyed','quick-drawing','rough','fast-talking','illiterate'],
 		identities_2: ['bandit','lawman','sheriff','prospector','card sharp','gun-runner','miner', 'outlaw','rancher','cowboy','cattle rustler','jerkline skinner','Colonel','scout','gun-slinger','rancher'],
@@ -62,7 +62,7 @@ $( document ).ready(function(){
 		identities_1 : ['virgin','dominatrix','French maid','secretary','older woman','nurse','divorcée','submissive','inner Goddess'],
 		names_1 : ['Tiffany','Chastity'],
 		situation_verbs: [],
-		verbs : [],
+		verbs : [{text: 'living in sin', prep: 'yes'}],
 		locations : [{text: 'a dungeon', prep: 'in'},{text: 'the red light district', prep: 'in'},{text: 'a luxurious bed', prep: 'in'}, {text: 'a bearskin rug', prep: 'on'}],
 		attributes_2: ['smouldering','depraved','repressed','liberated'],
 		identities_2: ['Marquis','flagellant','sadist','masochist'],
@@ -105,15 +105,29 @@ $( document ).ready(function(){
 		names_1 : ['Modesty'],
 		situation_verbs: [],
 		verbs : [],
-		locations : [{text: 'submarine', prep: 'in'},{text: 'missile silo', prep: 'in'},{text: 'volcanic lair', prep: 'in'},{text: 'war-torn country', prep: 'in'},{text: 'crashed plane', prep: 'in'},{text: 'UN summit', prep: 'in'}],
+		locations : [{text: 'a submarine', prep: 'in'},{text: 'a missile silo', prep: 'in'},{text: 'a volcanic lair', prep: 'in'},{text: 'a war-torn country', prep: 'in'},{text: 'a crashed plane', prep: 'in'},{text: 'a UN summit', prep: 'in'}],
 		attributes_2: ['insane','mad','suave','dangerous','mysterious','falsely accused','maverick','lawless','haunted','disgraced','inscrutable','undercover'],
 		identities_2: ['spy','superspy','anarchist','cop','detective','gumshoe','private investigator','marine','soldier','pilot','scientist','fireman','policeman','mercenary','soldier of fortune','dictator','freedom fighter','symbologist'],
 		names_2: [],
 		surnames: ['Reed','Bond','Leiter','Evanovich','Marlowe','Christie','Vane','Holmes','Watson','Bosch','Castle','Beckett','Jayne','Bourne','Blaise',"'O'Hare",'Fox','Rigsby','Clancy','Crichton']
 	};
+Sparky.historical = {
+		chosen : "no",
+		attributes_1 : ['impoverished','highly-strung'],
+		identities_1 : ['nonpareil','debutante','orphan','ward','governess',"lady's companion",'lady','countess'],
+		names_1 : ['Georgina','Victoria','Kitty','Leonie'],
+		situation_verbs: [],
+		verbs : [{text: 'hunted', prep: 'yes'},
+		{text: 'disguised', prep: 'yes'}],
+		locations : [{text: 'Almacks', prep: 'at'},{text: 'a palatial estate', prep: 'in'},{text: 'revolutionary France', prep: 'in'},{text: 'the vicarage', prep: 'in'},{text: 'her ancestral home', prep: 'in'},{text: 'an entailed estate', prep: 'on'},{text: 'a galleon', prep: 'on'},{text: 'a plantation', prep: 'on'},{text: 'the drawing room', prep: 'in'}],
+		attributes_2: [],
+		identities_2: ['curate','rake','libertine','captain','lord','count','revenue man','mill owner','Ajax'],
+		names_2: [],
+		surnames: []
+	};
 
-	Sparky.subgenres = [Sparky.general, Sparky.western, Sparky.adult, Sparky.paranormal, Sparky.professional,Sparky.thriller]
-
+	Sparky.subgenres = [Sparky.general, Sparky.western, Sparky.adult, Sparky.paranormal, Sparky.professional,Sparky.thriller, Sparky.historical]
+	
 	Sparky.pick = function(e){
 		//picks a word randomly from a list.
 		return e[Math.floor(Math.random() * e.length)];
@@ -246,6 +260,15 @@ $( document ).ready(function(){
 		}
 		else {
 			Sparky.thriller.chosen = 'no';
+		}
+	});
+	
+	$("#Historical").change(function() {
+		if(this.checked) {
+			Sparky.historical.chosen = 'yes';
+		}
+		else {
+			Sparky.historical.chosen = 'no';
 		}
 	});
 
