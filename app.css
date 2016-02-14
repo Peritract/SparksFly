@@ -101,7 +101,7 @@ a {
     padding: 5%;
     position: relative;
     z-index: 11;
-    top: -25%;
+    top: -500px;
 }
 
 #about_card .about {
