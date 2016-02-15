@@ -125,6 +125,7 @@ a {
     border: 1px solid #a1dbe9;
     border-radius:5px;
     padding:5px 10px;
+    text-align: left;
 }
 
 .genre-list li
